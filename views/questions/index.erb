@@ -1,0 +1,30 @@
+<h1>Question List</h1>
+<% @questions.each do |q| %>
+	<h3><%= q.question_name %></h3>
+	<p><%= q.question_details %></p>
+
+	<form method="POST" action="/questions/delete">
+		<input type="hidden" name="id" value="<%= q.id%>">
+  		<input type="submit" value="Delete?">
+  	<br>
+	</form> 
+
+	<form method="GET" action="/questions/edit">
+		<input type="hidden" name="id" value="<%= q.id%>">
+  		<input type="submit" value="Edit?">
+  	<br>
+	</form> 
+
+
+<% end %>
+
+<br>
+<br>
+<br>
+<br>
+
+<form>
+			<input type="button" value="Back to Menu" onclick="window.location.href='http://localhost:9393'"/>
+</form> 
+
+

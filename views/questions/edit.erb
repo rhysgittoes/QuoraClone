@@ -1,0 +1,19 @@
+<h1>Question Edit</h1>
+
+<h3><%= @questionedit.question_name %></h3>
+<p><%= @questionedit.question_details %></p>
+
+<br>
+<br>
+
+
+<form method="POST" action="/questions/edit">
+  New Question Title:<br>
+  <input type="text" name="question_name"><br>
+  New Question Details:<br>
+  <input type="text" name="question_details"><br><br>
+  <input type="hidden" name="id" value="<%= @questionedit.id %>">
+
+  <input type="submit" value="Submit">
+</form> 
+
