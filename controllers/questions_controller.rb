@@ -20,14 +20,15 @@ end
 		erb :"/questions/new"
 	end
 
-# Delete a question
+# Question Deleter
 	post '/questions/delete' do 
 		@questionsdelete = Question.find(params[:id])
-		@questionsdelete.delete
+		# @questionsdelete.answers.destroy_all
+
+		# @answersdelete =  Question. 
+		@questionsdelete.destroy
 		erb :"/questions/delete"
 	end
-
-
 
 # Question Editor
 	get '/questions/edit' do
@@ -41,24 +42,6 @@ end
 		redirect "/questions"
 	end
 
-# Answer questions
-	get '/questions/answer' do
-	  	@questionanswer = Question.find(params[:id])
-		erb :"/questions/answer"
-	end
-
-	post '/questions/answer' do 
-	 	@questionanswer = Answer.new(question_answer: params[:question_answer], question_id: params[:question_id])
-		@questionanswer.save
-		redirect "/questions"
-	end
-
-
-
-
-
-
-
 # Question finder
 get '/questions/:id' do
   @question = Question.find(params[:id])
@@ -70,6 +53,49 @@ end
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# # Answer questions
+# 	get '/questions/answer' do
+# 	  	@questionanswer = Question.find(params[:id])
+# 		erb :"/questions/answer"
+# 	end
+
+# 	post '/questions/answer' do 
+# 	 	@questionanswer = Answer.new(question_answer: params[:question_answer], question_id: params[:question_id])
+# 		@questionanswer.save
+# 		redirect "/questions"
+# 	end
+
+
+
+# # Upvote Answers
+
+# 	post '/questions/upvote' do 
+# 		@answer_upvote = Answer.find(params[:id])
+# 		@answer_upvote.update(upvotes: @answer_upvote.upvotes+1)
+# 		redirect "/questions"
+# 		p @answer_upvote.upvotes
+# 	end
 
 
 

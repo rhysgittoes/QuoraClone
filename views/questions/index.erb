@@ -70,7 +70,7 @@
 
 	<form method="POST" action="/questions/delete">
 		<input type="hidden" name="id" value="<%= q.id%>">
-  		<input type="submit" value="Delete">
+  		<input type="submit" value="Delete Question">
   	<br>
 	</form> 
 	<br>
@@ -85,8 +85,11 @@
 				<%= answer.question_answer %>
 			<p>
 <!-- Upvote Answer? -->
-			<form method="POST" action="/questions/delete">
-				<input type="hidden" name="id" value="<%= q.id%>">
+			Answer Upvotes <%= answer.upvotes%>
+			<br>
+			<!-- Answer id = <%= answer.id%> -->
+			<form method="POST" action="/questions/upvote">
+				<input type="hidden" name="id" value="<%= answer.id%>">
 		  		<input type="submit" value="Upvote">
 			</form> 
 
