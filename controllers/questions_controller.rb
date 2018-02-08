@@ -16,6 +16,7 @@ end
 
 get '/questions' do
 	@questions = Question.all
+	# @questionanswer = Answer.all
 	erb :"/questions/index"
 end
 

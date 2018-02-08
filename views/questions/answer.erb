@@ -1,20 +1,35 @@
 <h1>Question Answer</h1>
 
+<!-- Shows the Question -->
 <h3><%= @questionanswer.question_name %></h3>
 <p><%= @questionanswer.question_details %></p>
+<br>
 
-<% @questionanswer.answers.each do |answer| %>
-	<%= answer.question_answer %>
+<!-- Shows the Answers for the question -->
+<h3>Answers</h3>
+<% @questionanswer.answers.each_with_index do |answer, index| %>
+		<p><h4>Answer No. <%= (index + 1).to_s %> </h4>
+			
+			<%= answer.question_answer %> </p>
+<br>
 <% end %>
 
 <br>
 <br>
+		<form method="POST" action="/questions/answer">
+		  Answer<br>
+		  <input type="text" name="question_answer"><br>
+		  <input type="hidden" name="question_id" value="<%= @questionanswer.id %>">
+		  <br>
+		  <input type="submit" value="Submit">
+		</form> 
 
 
-<form method="POST" action="/questions/answer">
-  Answer<br>
-  <input type="text" name="question_answer"><br>
-  <input type="hidden" name="question_id" value="<%= @questionanswer.id %>">
-  <input type="submit" value="Submit">
+
+
+<br>
+<br>
+<form>
+	<input type="button" value="Back to Menu" onclick="window.location.href='http://localhost:9393'"/>
 </form> 
 

@@ -4,24 +4,30 @@
 	<p><%= q.question_details %></p>
 
 
-	<form method="POST" action="/questions/delete">
-		<input type="hidden" name="id" value="<%= q.id%>">
-  		<input type="submit" value="Delete?">
-  	<br>
-	</form> 
 
 	<form method="GET" action="/questions/edit">
 		<input type="hidden" name="id" value="<%= q.id%>">
-  		<input type="submit" value="Edit?">
+  		<input type="submit" value="Edit">
   	<br>
 	</form> 
 
 <!-- Question Answer Page button -->
 		<form method="GET" action="/questions/answer">
 		<input type="hidden" name="id" value="<%= q.id%>">
-  		<input type="submit" value="Answer?, <%= q.id%>">
+  		<input type="submit" value="Answer">
   	<br>
 	</form> 
+
+
+
+	<form method="POST" action="/questions/delete">
+		<input type="hidden" name="id" value="<%= q.id%>">
+  		<input type="submit" value="Delete">
+  	<br>
+	</form> 
+
+
+
 
 
 <% end %>
