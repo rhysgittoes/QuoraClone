@@ -1,33 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+	<title>Question List</title>
+
+<style>
+
+		body{
+
+		    font-family: 'Raleway', sans-serif;
+		    background-color:white;
+		    text-align: center;
+			}
+
+		form{
+			 display: inline-block;
+		}
+		div.question-answer-container{
+
+			text-align: center;
+
+		}
+		div.question-answer-box{
+			background-color: #dfd6d6;
+			width:70%;
+			margin-right:auto;
+			margin-left:auto;
+			margin-top: 5px;
+			margin-bottom: 5px;
+			padding:5px;
+		
+
+		}
+
+
+			</style>
+	</head>
+
+
+<body>
+
 <h1>Question List</h1>
-<% @questions.each do |q| %>
+
+
+<!-- Displays Questions -->
+
+<% @questions.each do |q|  %>
+<div class= "question-answer-container">
+<div class= "question-answer-box">
+	
+
 	<h3><%= q.question_name %></h3>
 	<p><%= q.question_details %></p>
 
 
-
+<!-- Button Navigation -->
 	<form method="GET" action="/questions/edit">
 		<input type="hidden" name="id" value="<%= q.id%>">
   		<input type="submit" value="Edit">
   	<br>
-	</form> 
 
-<!-- Question Answer Page button -->
+	</form> 
 		<form method="GET" action="/questions/answer">
 		<input type="hidden" name="id" value="<%= q.id%>">
   		<input type="submit" value="Answer">
   	<br>
 	</form> 
 
-
-
 	<form method="POST" action="/questions/delete">
 		<input type="hidden" name="id" value="<%= q.id%>">
   		<input type="submit" value="Delete">
   	<br>
 	</form> 
+	<br>
 
 
 
+<!-- Answers to the question -->
+	<h3>Answers</h3>
+	<% q.answers.each_with_index do |answer, index| %>
+			<p> 
+				<h5>Answer No. <%= (index + 1).to_s %> </h5>
+				<%= answer.question_answer %>
+			<p>
+<!-- Upvote Answer? -->
+			<form method="POST" action="/questions/delete">
+				<input type="hidden" name="id" value="<%= q.id%>">
+		  		<input type="submit" value="Upvote">
+			</form> 
+
+	<% end %>
+</div>
+</div>
 
 
 <% end %>
@@ -42,3 +107,5 @@
 </form> 
 
 
+</body>
+</html>
