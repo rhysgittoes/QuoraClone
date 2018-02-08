@@ -41,6 +41,28 @@ end
 
 
 
+
+
+# Question Answer Page Get
+
+get '/questions/answer' do
+  	@questionanswer = Question.find(params[:id])
+	erb :"/questions/answer"
+end
+
+post '/questions/answer' do 
+ 	@questionanswer = Answer.new(question_answer: params[:question_answer])
+	@questionanswer.save
+	redirect "/questions"
+end
+
+
+
+
+
+
+
+
 get '/questions/:id' do
   @question = Question.find(params[:id])
   erb :"/questions/show"

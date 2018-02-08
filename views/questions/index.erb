@@ -2,6 +2,7 @@
 <% @questions.each do |q| %>
 	<h3><%= q.question_name %></h3>
 	<p><%= q.question_details %></p>
+<!-- 	<p><%= q.question_answer %></p> -->
 
 	<form method="POST" action="/questions/delete">
 		<input type="hidden" name="id" value="<%= q.id%>">
@@ -12,6 +13,13 @@
 	<form method="GET" action="/questions/edit">
 		<input type="hidden" name="id" value="<%= q.id%>">
   		<input type="submit" value="Edit?">
+  	<br>
+	</form> 
+
+<!-- Question Answer Page button -->
+		<form method="GET" action="/questions/answer">
+		<input type="hidden" name="id" value="<%= q.id%>">
+  		<input type="submit" value="Answer?, <%= q.id%>">
   	<br>
 	</form> 
 

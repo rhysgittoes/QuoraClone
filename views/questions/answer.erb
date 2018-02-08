@@ -1,0 +1,16 @@
+<h1>Question Answer</h1>
+
+<h3><%= @questionanswer.question_name %></h3>
+<p><%= @questionanswer.question_details %></p>
+
+<br>
+<br>
+
+
+<form method="POST" action="/questions/answer">
+  Answer<br>
+  <input type="text" name="question_answer"><br>
+  <input type="hidden" name="id" value="<%= @questionanswer.id %>">
+  <input type="submit" value="Submit">
+</form> 
+
