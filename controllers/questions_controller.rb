@@ -12,6 +12,7 @@ post '/questions/new' do
 	erb :"/questions/new"
 end
 
+# All questions
 
 get '/questions' do
 	@questions = Question.all
@@ -27,6 +28,7 @@ end
 
 
 
+# Question Editor
 
 get '/questions/edit' do
   	@questionedit = Question.find(params[:id])
@@ -51,7 +53,7 @@ get '/questions/answer' do
 end
 
 post '/questions/answer' do 
- 	@questionanswer = Answer.new(question_answer: params[:question_answer])
+ 	@questionanswer = Answer.new(question_answer: params[:question_answer], question_id: params[:question_id])
 	@questionanswer.save
 	redirect "/questions"
 end
@@ -62,6 +64,9 @@ end
 
 
 
+
+
+# Question finder
 
 get '/questions/:id' do
   @question = Question.find(params[:id])
